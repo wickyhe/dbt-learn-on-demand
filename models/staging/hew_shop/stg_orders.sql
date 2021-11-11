@@ -9,3 +9,4 @@ with orders as (
   from hew_poc.orders
 )
 select * from orders
+

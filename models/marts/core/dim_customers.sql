@@ -1,13 +1,14 @@
-{{config(
-  materialized="table"  
-)}}
-
+/*
+ {{config(
+  materialized = "table"
+ )}}
+*/
 with customers as (
 select * from {{ref('stg_customers')}}
 ),
 orders as (
 
-select * from {{ref('stg_orders')}}
+select * from {{ref('fct_orders')}}
   
 ),
 customer_orders as (
@@ -16,7 +17,8 @@ customer_orders as (
   customer_id,
   min(order_date) as first_order_date,
   max(order_date) as most_recent_order_date,
-  count(order_id) as number_of_orders
+  count(order_id) as number_of_orders,
+  sum(amount) as lifetime_value
   
   from orders
   group by 1
