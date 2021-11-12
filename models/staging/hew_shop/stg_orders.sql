@@ -1,4 +1,3 @@
-with orders as (
 
   select 
   id as order_id,
@@ -6,7 +5,6 @@ with orders as (
   order_date,
   status
   
-  from hew_poc.orders
-)
-select * from orders
+  from {{ source('hew_shop','orders')}}
+
 
