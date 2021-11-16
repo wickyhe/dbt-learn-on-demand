@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+ - name: hew_shop
+   description: A copy of a Postgres applicatin database.
+   database: developer_poc
+   schema: hew_poc
+   tables:
+      - name: mock_orders
+      
